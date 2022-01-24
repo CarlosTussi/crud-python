@@ -1,2 +1,10 @@
 import mysql.connector
-import
+import dbconfig
+
+mydb = mysql.connector.connect(
+    host= dbconfig.host,
+    user=dbconfig.user,
+    password=dbconfig.password
+)
+
+print(mydb)
