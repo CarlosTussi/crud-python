@@ -2,6 +2,22 @@ from tkinter import *
 
 master = Tk()
 
+#DataBase variables (Change to a class later one ?)
+#Movie Table
+movie_db_title = None
+movie_db_director = None
+movie_db_country = None
+movie_db_year = None
+movie_db_genre = None
+
+#Actors Table
+actor_db_first_name = None
+actor_db_last_name = None
+actor_db_gender = None
+
+#Cast Table
+cast_db_role = None
+
 
 #Creating label
 #Main labels
@@ -73,12 +89,46 @@ cast_input_role.grid(row = 10, column= 2, sticky = W, pady = 2)
 
 
 #Adds button to the interface
-def buttonPressed():
-   print("Button pressed")
+def addNewMovieEntry():
+    #Movie Table
+    movie_db_title = movie_input_title.get()
+    movie_db_director = movie_input_director.get()
+    movie_db_country = movie_input_country.get()
+    movie_db_year = movie_input_year.get()
+    movie_db_genre = movie_input_genre.get()
 
-submit_button = Button(master, text ="Submit", command = buttonPressed)
 
-submit_button.grid(row = 11, column = 1, columnspan=3)
+    print(movie_db_title)
+    print(movie_db_director)
+    print(movie_db_country)
+    print(movie_db_year)
+    print(movie_db_genre)
+ 
 
+submit_button = Button(master, text ="Submit New Entry", command = addNewMovieEntry)
+
+
+
+def addNewCastMember():
+    #Actor Table
+    actor_db_first_name = cast_input_first_name.get()
+    actor_db_last_name = cast_input_last_name.get()
+    actor_db_gender = cast_input_gender.get()
+    
+    #Cast Table
+    cast_db_role = cast_input_role.get()
+
+    print(actor_db_first_name)
+    print(actor_db_last_name)
+    print(actor_db_gender)
+    print(cast_db_role)
+
+
+add_cast_member_button = Button(master, text = "Add", command = addNewCastMember)
+
+add_cast_member_button.grid(row = 11, column = 1, columnspan= 3)
+submit_button.grid(row = 15, column = 1, columnspan=3)
+
+master.grid_columnconfigure(40, minsize=100)
 
 master.mainloop()
