@@ -2,6 +2,7 @@ from tkinter import *
 
 master = Tk()
 
+
 #Creating label
 #Main labels
 movie_label = Label(master, text = "Movie")
@@ -71,7 +72,12 @@ cast_input_gender.grid(row = 9, column= 2, sticky = W, pady = 2)
 cast_input_role.grid(row = 10, column= 2, sticky = W, pady = 2)
 
 
+def buttonPressed():
+   print("Button pressed")
 
+submit_button = Button(master, text ="Submit", command = buttonPressed)
+
+submit_button.grid(row = 11, column = 1, columnspan=3)
 
 
 master.mainloop()
