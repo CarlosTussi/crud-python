@@ -72,6 +72,7 @@ cast_input_gender.grid(row = 9, column= 2, sticky = W, pady = 2)
 cast_input_role.grid(row = 10, column= 2, sticky = W, pady = 2)
 
 
+#Adds button to the interface
 def buttonPressed():
    print("Button pressed")
 
