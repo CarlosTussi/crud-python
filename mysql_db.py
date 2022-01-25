@@ -66,12 +66,14 @@ print('\n')
 ##Populating ACTORS table
 # sql = "INSERT INTO actors (first_name, last_name, gender) VALUES (%s, %s, %s)"
 # value = [
-#     ('Jennifer', 'Lawrance', 'F'),
-#     ('Sasha', 'Luss', 'F')
+#     ('Na-ra', 'Lee', 'F'),
+#     ('Lee', 'Soon-won', 'M'),
+#     ('Na', 'Young-hee', 'F')
 # ]
 
 # mycursor.executemany(sql, value)
 # mydb.commit()
+
 print("=-ACTORS-=")
 mycursor.execute("SELECT * FROM actors")
 for x in mycursor:
@@ -82,9 +84,9 @@ print('\n')
 ##Populating MOVIE_CAST table
 # sql = "INSERT INTO movie_cast (movie_id, actor_id, role) VALUES (%s, %s, %s)"
 # value =[
-#     ('1', '3', 'Kate Dibiansky'),
-#     ('7', '3', 'Katniss Everdeen'),
-#     ('2', '4', 'Anna')
+#     ('3', '8', 'Chois Wife'),
+#     ('3', '9', 'Policeman'),
+#     ('3', '10', 'Mother')
 # ]
 
 # mycursor.executemany(sql, value)
@@ -95,3 +97,39 @@ mycursor.execute("SELECT * FROM movie_cast")
 for x in mycursor:
     print(x)
 print('\n')
+
+
+
+print("All the movies played by Jennifer Lawrance: ")
+sql = "SELECT name FROM movies JOIN Movie_cast ON movies.id = movie_cast.movie_id \
+                                    JOIN actors ON actors.first_name = 'Jennifer' AND actors.last_name = 'Lawrance' \
+                                           AND actors.id = movie_cast.actor_id"
+                                           
+mycursor.execute(sql)
+for x in mycursor:
+    print(x)
+print('\n')
+
+print("All the actors in Don't look up: ")
+sql = "SELECT first_name, last_name FROM actors \
+            JOIN movie_cast ON actors.id = movie_cast.actor_id \
+                JOIN movies ON movies.id = movie_cast.movie_id \
+                            AND movies.name = 'Dont look up'"
+
+mycursor.execute(sql)
+for x in mycursor:
+    print(x)
+print('\n')
+
+print("All the casts of Forgotten and Dont look up")
+sql = "SELECT first_name, last_name FROM actors \
+            JOIN movie_cast ON actors.id = movie_cast.actor_id \
+                JOIN movies ON movies.id = movie_cast.movie_id \
+                            AND (movies.name = 'Dont look up'\
+                            OR   movies.name = 'Forgotten')"
+
+mycursor.execute(sql)
+for x in mycursor:
+    print(x)
+print('\n')            
+
