@@ -90,6 +90,28 @@ cast_input_gender.grid(row = 9, column= 2, sticky = W, pady = 2)
 cast_input_role.grid(row = 10, column= 2, sticky = W, pady = 2)
 
 
+string_text = ""
+###############
+##Bind testing#
+###############
+def testing(event):
+    global string_text
+    string_text = string_text + event.char
+    
+    ##For REAL-TIME update
+    #Erase whatever is writted
+    result_db_panel.delete('1.0',END)
+    #Write the new content
+    result_db_panel.insert(END, string_text)
+
+    print(string_text)
+
+cast_input_first_name.bind('<Key>', testing)
+###############
+##Bind testing#
+###############
+
+
 
 #Adds button to the interface
 def addNewMovieEntry():
@@ -117,6 +139,7 @@ def addNewCastMember():
     actor_db_first_name = cast_input_first_name.get()
     actor_db_last_name = cast_input_last_name.get()
     actor_db_gender = cast_input_gender.get()
+
     
     #Cast Table
     cast_db_role = cast_input_role.get()
