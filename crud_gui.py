@@ -1,6 +1,8 @@
 from tkinter import *
 
-master = Tk()
+master = Tk(className=' Movie DB')
+master.geometry("800x500")
+master.resizable(False, False)
 
 #DataBase variables (Change to a class later one ?)
 #Movie Table
@@ -45,18 +47,18 @@ cast_label_role = Label(master, text = "Role")
 
 #Arrange input labels in the grid
 #Movie labels
-movie_label_title.grid(row=1, column=0, sticky= W, pady= 2)
-movie_label_director.grid(row=2, column=0, sticky= W, pady= 2)
-movie_label_country.grid(row=3, column=0, sticky= W, pady= 2)
-movie_label_year.grid(row=4, column=0, sticky= W, pady= 2)
-movie_label_genre.grid(row=5, column=0, sticky= W, pady= 2)
+movie_label_title.grid(row=1, column=0, sticky= W, pady= 2, padx= 10)
+movie_label_director.grid(row=2, column=0, sticky= W, pady= 2, padx= 10)
+movie_label_country.grid(row=3, column=0, sticky= W, pady= 2, padx= 10)
+movie_label_year.grid(row=4, column=0, sticky= W, pady= 2, padx= 10)
+movie_label_genre.grid(row=5, column=0, sticky= W, pady= 2, padx= 10)
 
 
 #Cast labels
-cast_label_first_name.grid(row = 7, column= 0, sticky = W, pady = 2)
-cast_label_last_name.grid(row = 8, column= 0, sticky = W, pady = 2)
-cast_label_gender.grid(row = 9, column= 0, sticky = W, pady = 2)
-cast_label_role.grid(row = 10, column= 0, sticky = W, pady = 2)
+cast_label_first_name.grid(row = 7, column= 0, sticky = W, pady = 2, padx= 10)
+cast_label_last_name.grid(row = 8, column= 0, sticky = W, pady = 2, padx= 10)
+cast_label_gender.grid(row = 9, column= 0, sticky = W, pady = 2, padx= 10)
+cast_label_role.grid(row = 10, column= 0, sticky = W, pady = 2, padx= 10)
 
 
 #Get input from user
@@ -86,6 +88,7 @@ cast_input_first_name.grid(row = 7, column= 2, sticky = W, pady = 2)
 cast_input_last_name.grid(row = 8, column= 2, sticky = W, pady = 2)
 cast_input_gender.grid(row = 9, column= 2, sticky = W, pady = 2)
 cast_input_role.grid(row = 10, column= 2, sticky = W, pady = 2)
+
 
 
 #Adds button to the interface
@@ -129,6 +132,17 @@ add_cast_member_button = Button(master, text = "Add", command = addNewCastMember
 add_cast_member_button.grid(row = 11, column = 1, columnspan= 3)
 submit_button.grid(row = 15, column = 1, columnspan=3)
 
-master.grid_columnconfigure(40, minsize=100)
+#############################
+#############################
+######### CANVAS ############
+#############################
+#############################
+
+result_db_panel = Text(master, height=35, width = 67)
+result_db_panel.grid(row=1, rowspan= 15, column=7, padx= (20, 20), pady= (2, 10))
+
+
+
+print(master.grid_size())
 
 master.mainloop()
